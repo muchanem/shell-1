@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
 . colors.sh
 
-echo -e  "${c_yellow} Hello ${c_red} World ${c_reset}" 
+echo  "${c_yellow} Hello ${c_red} World ${c_reset}" 
 
