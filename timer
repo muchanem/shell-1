@@ -1,52 +1,49 @@
 #!/bin/sh
 
-
-hundreths=0
-seconds=0
-minutes=0
-hours=0
+weeks=0
 days=0
+hours=0
+minutes=0
+seconds=0
+hundreths=0
 
-while true; do    
-  clear
-  echo $SOL_red
-  echo day:
-  echo $day
-  echo hour:
-  echo $hour
-  echo $SOl_yellow
-  echo minute:
+while true; do
+  echo $cclear
+  echo $cred Weeks:
+  echo $weeks
+  echo $corange Days:
+  echo $days
+  echo $cyellow Hours:
+  echo $hours
+  echo $cgreen Minutes:
   echo $minutes
-  echo $SOl_blue
-  echo second:
+  echo $cblue Seconds:
   echo $seconds
-  echo $SOL_yellow
-  echo hundreth:
+  echo $cviolet Hundreths:
   echo $hundreths
   sleep 0.01
   hundreths=`expr $hundreths + 1`
-  if [ $hundreths -eq 100 ]
-  then
+  if [ $hundreths -eq 100 ]; then
     seconds=`expr $seconds + 1`
     hundreths=0
   fi
-  if [ $seconds -eq 60 ]
-  then
-    minutes=`expr $minutes + 1`
-    seconds=0
-fi
- if [ $minutes -eq 60 ]
-  then
-    hours=`expr $hours + 1`
-    minutes=0
-fi
-if [ $hours -eq 24 ]
-then
-days=`expr $days + 1`
-hours=0
-fi
+  if [ $seconds -eq 60 ]; then
+  minutes=`expr $minutes + 1`
+  seconds=0
+  fi
+  if [ $minutes -eq 60  ]; then
+  hours=`expr $hours + 1`
+  minutes=0
+  fi
+  if [ $hours -eq 24 ]; then
+  days=`expr $days + 1`
+  hours=0
+  fi
+  if [ $days -eq 7 ]; then
+  weeks=`expr $weeks + 1`
+  days=0
+  fi
 done
-
 
 
 
