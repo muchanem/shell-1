@@ -1,0 +1,37 @@
+#!/bin/sh
+
+#badgers=12
+#mushrooms=2
+#snake=4
+mushrooms=0
+
+echo $SOL_clear
+
+while true; do
+  for badger in `seq 1 12` ;
+  do
+    
+    echo "Badger!"
+    sleep 0.50
+  
+  done
+
+  for mushroom in `seq 1 2`;
+  do
+
+    echo "Mussroom"
+    sleep 0.75
+    mushrooms=`expr $mushrooms + 1`
+  done
+
+
+  if [ $mushrooms -eq 5 ]; then
+    
+      echo "Snake"
+      sleep 5
+      mushrooms=0
+fi
+
+
+
+done
