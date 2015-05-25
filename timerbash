@@ -1,4 +1,6 @@
-ets stdin to no echo and give a char every tenth of a sec.
+#!/bin/bash
+ 
+# sets stdin to no echo and give a char every tenth of a sec.
 stty -echo -icanon time 1 <&0
  
 chkspace () {
@@ -51,4 +53,3 @@ while true ; do
  
   COUNT=$DIFF
 done
-
