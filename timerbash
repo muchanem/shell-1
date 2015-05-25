@@ -1,0 +1,54 @@
+ets stdin to no echo and give a char every tenth of a sec.
+stty -echo -icanon time 1 <&0
+ 
+chkspace () {
+ 
+  if ! read -t 0 ; then return 1 ; fi    # no char pressed
+  read -n 1 ans
+  if [ "$ans" = " " ]; then return 0 ; fi
+  case "$ans" in
+  r|R)  COUNT=0 ; BEGIN=$(date +%s)
+        printf "\r%3d Days, %02d:%02d:%02d" 0 0 0 0
+        ;;
+  q|Q)  stty echo icanon <&0
+        echo ""
+        exit 0
+        ;;
+  [1-9]) echo " - $ans" ;;
+  esac
+  return 1
+}
+ 
+echo "Stopwatch: to start and stop press the SPACEBAR..."
+ 
+printf "\r%3d Days, %02d:%02d:%02d" 0 0 0 0
+ 
+COUNT=0
+IFS=
+while true ; do
+ 
+  while true; do
+    if chkspace ; then break; fi
+    sleep 0.1
+  done
+ 
+  BEGIN=$(date +%s)
+  while true; do
+    NOW=$(date +%s)
+    let DIFF=$(($NOW - $BEGIN + $COUNT))
+ 
+    let MINS=$(($DIFF / 60))
+    let SECS=$(($DIFF % 60))
+    let HOURS=$(($DIFF / 3600))
+    let DAYS=$(($DIFF / 86400))
+ 
+    # \r  is a "carriage return" - returns cursor to start of line
+    printf "\r%3d Days, %02d:%02d:%02d" $DAYS $HOURS $MINS $SECS
+ 
+    if chkspace ; then break; fi
+    sleep 0.1
+  done
+ 
+  COUNT=$DIFF
+done
+
