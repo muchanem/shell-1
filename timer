@@ -1,42 +1,46 @@
 #!/bin/sh
-badgers=12
-mushrooms=2
-count=0
+
+weeks=0
+days=0
+hours=0
+minutes=0
+seconds=0
+hundreths=0
 
 while true; do
   echo $cclear
-  for badgers in `seq 1 12`; do
-    echo $cred
-    echo "Badgers!"
-    sleep 0.65
-  done
-  if [ $count -eq 6 ]; then
-    echo $cyellow
-    echo "Muuushrooom!"
-    sleep 1.25
-    echo "Muuushrooom!"
-    sleep 1.25
-    echo $cblue
-    echo "  _________ _______      _____   ____  __.___________._."
-    echo " /   _____/ \      \    /  _  \ |    |/ _|\_   _____/| |"
-    echo " \_____  \  /   |   \  /  /_\  \|      <   |    __)_ | |"
-    echo " /        \/    |    \/    |    \    |  \  |        \ \|"
-    echo "/_______  /\____|__  /\____|__  /____|__ \/_______  / __"
-    echo "        \/         \/         \/        \/        \/  \/"
-    sleep 5
-    count=0
-  else
-    for mushrooms in `seq 1 2`; do
-      echo $cyellow
-      echo "Muuushrooom"
-      sleep 1.25
-      count=`expr $count + 1`
-    done
+  echo $cred Weeks:
+  echo $weeks
+  echo $corange Days:
+  echo $days
+  echo $cyellow Hours:
+  echo $hours
+  echo $cgreen Minutes:
+  echo $minutes
+  echo $cblue Seconds:
+  echo $seconds
+  echo $cviolet Hundreths:
+  echo $hundreths
+  sleep 0.01
+  hundreths=`expr $hundreths + 1`
+  if [ $hundreths -eq 100 ]; then
+    seconds=`expr $seconds + 1`
+    hundreths=0
+  fi
+  if [ $seconds -eq 60 ]; then
+  minutes=`expr $minutes + 1`
+  seconds=0
+  fi
+  if [ $minutes -eq 60  ]; then
+  hours=`expr $hours + 1`
+  minutes=0
+  fi
+  if [ $hours -eq 24 ]; then
+  days=`expr $days + 1`
+  hours=0
+  fi
+  if [ $days -eq 7 ]; then
+  weeks=`expr $weeks + 1`
+  days=0
   fi
 done
-
-
-
-
-
-
