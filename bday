@@ -1,0 +1,9 @@
+#!/bin/sh
+
+timsbday=5/27/15
+day=currentdate
+
+if [ $day -eq $timsbday ]; then
+  echo ${SOL_yellow} Happy Birthday Timothy
+
+

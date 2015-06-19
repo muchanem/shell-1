@@ -30,6 +30,7 @@ Welcome To the Magic8Ball enter you question below
 '
 
 while true; do
+  echo $SOL_red
   echo -n '>'
   read question
   echo $SOL_red

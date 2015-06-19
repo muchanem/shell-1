@@ -1,0 +1,20 @@
+#!/bin/sh
+
+
+
+echo ${SOL_clear}
+
+echo ${SOL_red}Multiplication  Table
+
+if [ -n "$1" ]; then
+  num=$1
+else
+  echo ${SOL_orange}PLease Enter An Number:
+  read num  
+fi
+
+for m in `seq 12 1`; do
+  echo ${SOL_yellow}$m x $num = `expr $m  \* $num`
+done
+
+

@@ -1,11 +1,11 @@
 #!/bin/bash
  
-# sets stdin to no echo and give a char every tenth of a sec.
+
 stty -echo -icanon time 1 <&0
  
 chkspace () {
  
-  if ! read -t 0 ; then return 1 ; fi    # no char pressed
+  if ! read -t 0 ; then return 1 ; fi 
   read -n 1 ans
   if [ "$ans" = " " ]; then return 0 ; fi
   case "$ans" in
@@ -44,7 +44,7 @@ while true ; do
     let HOURS=$(($DIFF / 3600))
     let DAYS=$(($DIFF / 86400))
  
-    # \r  is a "carriage return" - returns cursor to start of line
+    
     printf "\r%3d Days, %02d:%02d:%02d" $DAYS $HOURS $MINS $SECS
  
     if chkspace ; then break; fi
