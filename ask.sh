@@ -1,15 +1,3 @@
-#!/bin/sh
-
-die()
-{
-  echo "${SOL_red}You Died"
-}
-
-live()
-{
-  echo "${SOL_yellow}You May Pass"
-}
-
 ask()
 {
   question="$1"
@@ -18,18 +6,4 @@ ask()
   read answer
   answer=`echo $name | tr '[:upper:]' '[:lower:]'`
 }
-
-echo ${SOL_clear}
-echo  "${SOL_yellow}Who would cross the Bridge Of Death 
-must aswer me these questions three 
-'Ere the other side you see"
-
-ask "${SOL_red} Hello there what is your name?"
-name=$answer
-echo "$name"
-
-
-ask "What is your quest, $name"
-quest=$answer
-echo "quest"
 
