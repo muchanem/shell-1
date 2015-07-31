@@ -1,0 +1,47 @@
+#!/bin/sh
+
+. ultils.sh
+
+clear
+echo ${SOL_yellow}Welcome to MadLibs.${SOL_reset}
+
+text='
+I enjoy long, {adj1} walks on the beach, getting {edverb1} in the rain
+and random encounters with {plural1}. I really like {breakfast_cereal}
+mixed with {liquid}, and romantic, candle-lit {plural2}. I am well-read
+from Dr. Seuss to {famous_person}. I travel frequently, especially
+to {place}, when I am not busy with work. (I am a {occupation}.) I
+am looking for {noun1} and beauty in the form of a {nationality}
+goddess. She should have the physique of {male_celebrity} and the {noun2}
+of {female_friend}. I would prefer if she knew how fix my {plural3}. I
+know I’m not very attractive in my picture, but it was taken {number}
+days ago, and I have since become more {adj2}.
+'
+
+
+keys="adjective1
+verb_ending_in_-ed
+plural_noun1
+breakfast_cereal
+liquid
+plural_noun2
+famous_person
+place
+occupation
+noun1
+nationality
+male_celebrity
+noun2
+female
+plural3
+number
+adjective2"
+
+for key in $keys; do
+  prompt=`echo "$key" | tr '_' ' ' | sed -e "s/\b\(.\)/\u\1/g; s/[0-9]*\$//g"`
+  ask "$prompt:"
+  text=`echo "$text" | sed "s/{$key}/$answer/g"`
+done
+
+echo "$text"
+
