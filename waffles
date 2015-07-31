@@ -1,4 +1,6 @@
-.sh
+#!/bin/sh
+
+. utils.sh
 
 clear
 ask "Do you like waffles?" $cyellow $cblue
@@ -19,4 +21,4 @@ if [ "$qwaffles" = "yes" ]; then
   fi
 else
   exit
-fii
+fi
